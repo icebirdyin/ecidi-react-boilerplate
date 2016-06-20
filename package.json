@@ -1,7 +1,7 @@
 {
-  "name": "react-application-boilerplate",
-  "version": "1.0.0",
-  "description": "simplify application boilerplate for react",
+  "name": "ecidi-react-boilerplate",
+  "version": "2.0.0",
+  "description": "ecidi react boilerplate",
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
@@ -16,19 +16,15 @@
   "author": "xueying (https://github.com/catcxj)",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^6.5.2",
-    "babel-core": "^6.7.7",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-react-transform": "^2.0.2",
-    "babel-preset-es2015": "^6.6.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-2": "^6.5.0",
-    "react-transform-hmr": "^1.0.4",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "babel-core": "^6.9.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1"
+    "history": "^3.0.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1"
   }
 }
