@@ -36,17 +36,17 @@ app文件夹内部所有功能组件性质的集合都大写开头。
 
 #### 基础指令
 
-> $ npm install
-> 
-> $ npm run build
-> 
-> $ npm run start
-> 
-> 打开游览器，地址栏输入 http://localhost:8080
+`$ npm install`
+
+`$ npm run build`
+
+`$ npm run start`
+
+打开游览器，地址栏输入 http://localhost:8080；
 
 如何变动端口号：
 
-> 变动 webpack.dev.config 以及 server.js 当中的端口号。
+变动 webpack.dev.config 以及 server.js 当中的端口号。
 
 <br>
 <br>
