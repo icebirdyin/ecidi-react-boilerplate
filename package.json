@@ -4,8 +4,7 @@
   "description": "ecidi react boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "build": "webpack --config webpack.dev.config.js -p"
+    "start": "cross-env NODE_ENV=development node server",
   },
   "keywords": [
     "react",
@@ -18,14 +17,23 @@
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
+    "offline-plugin": "^3.4.0",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
     "history": "^3.0.0",
+    "immutable": "^3.8.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-router": "^2.4.1"
+    "react-redux": "^4.4.5",
+    "react-router": "^2.4.1",
+    "react-router-redux": "^4.0.5",
+    "react-router-scroll": "^0.2.0",
+    "redux": "^3.5.2",
+    "redux-immutable": "^3.0.6",
+    "redux-saga": "^0.10.5",
+    "reselect": "^2.5.1"
   }
 }
