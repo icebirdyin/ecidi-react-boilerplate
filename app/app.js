@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -14,15 +15,15 @@ if (window.devToolsExtension) {
 	window.devToolsExtension.updateStore(store);
 }
 
-import { selectLocationState } from 'containers/App/selectors';
+import { selectLocationState } from './Pages/BasePage/selectors';
 const history = syncHistoryWithStore(browserHistory, store, {
 	selectLocationState: selectLocationState(),
 });
 
-import App from 'containers/App';
+import BasePage from './Pages/BasePage';
 import createRoutes from './routes';
 const rootRoute = {
-	component: App,
+	component: BasePage,
 	childRoutes: createRoutes(store),
 };
 
