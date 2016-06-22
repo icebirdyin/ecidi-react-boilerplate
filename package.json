@@ -16,6 +16,7 @@
   "license": "MIT",
   "babel": {
     "presets": [
+      "es2015",
       "es2015-webpack",
       "react",
       "stage-0"
@@ -81,6 +82,7 @@
     "redux": "^3.5.2",
     "redux-immutable": "^3.0.6",
     "redux-saga": "^0.10.5",
-    "reselect": "^2.5.1"
+    "reselect": "^2.5.1",
+    "sanitize.css": "^4.0.0"
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import 'sanitize.css/sanitize.css';
 
-import Footer from 'components/Footer';
+import Footer from '../../Components/Footer';
 
 import styles from './styles.css';
 

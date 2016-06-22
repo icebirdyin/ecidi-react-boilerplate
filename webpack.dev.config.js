@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const logger = require('./server/logger');
 
 const cssnext = require('postcss-cssnext');
 const postcssFocus = require('postcss-focus');
