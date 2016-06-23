@@ -7,8 +7,6 @@ const loadModule = (cb) => (componentModule) => {
 };
 
 export default function createRoutes(store) {
-	// const { injectReducer, injectSagas } = getHooks(store);
-
 	return [
 		{
 			path: '/',
@@ -19,7 +17,7 @@ export default function createRoutes(store) {
 					System.import('Pages/HomePage'),
 				]);
 				
-				const renderRoute = loadModule(cb);
+				loadModule(cb);
 
 				// importModules.then(([reducer, sagas, component]) => {
 				// 	injectReducer('home', reducer.default);

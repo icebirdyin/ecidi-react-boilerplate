@@ -9,18 +9,15 @@ const logger = {
 		console.error(chalk.red(err));
 	},
 
-	appStarted: (port, tunnelStarted) => {
-		console.log(`Server started ${chalk.green('✓')}`);
-
-		if (tunnelStarted) {
-			console.log(`Tunnel initialised ${chalk.green('✓')}`);
-		}
+	appStarted: (port) => {
+		console.log(`Server started ${chalk.green(':')}`);
 
 		console.log(`
-			${chalk.bold('Access URLs:')}${divider}
+			${chalk.bold('Access URLs:')}
+			${divider}
 			Localhost: ${chalk.magenta(`http://localhost:${port}`)}
-			LAN: ${chalk.magenta(`http://${ip.address()}:${port}`) +
-			(tunnelStarted ? `\n    Proxy: ${chalk.magenta(tunnelStarted)}` : '')}${divider}
+			LAN: ${chalk.magenta(`http://${ip.address()}:${port}`)}
+			${divider}
 			${chalk.blue(`Press ${chalk.italic('CTRL-C')} to stop`)}
     	`);
 	},

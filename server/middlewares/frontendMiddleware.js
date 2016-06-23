@@ -41,7 +41,6 @@ const addProdMiddlewares = (app, options) => {
 	app.get('*', (req, res) => res.sendFile(path.resolve(outputPath, 'index.html')));
 };
 
-
 module.exports = (app, options) => {
 	const isProd = process.env.NODE_ENV === 'production';
 

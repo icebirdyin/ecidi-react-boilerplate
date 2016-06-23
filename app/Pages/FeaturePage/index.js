@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import Button from '../../Components/Button';
-import H1 from '../../Components/H1';
+import H1 from '../../Components/HX';
 
 import styles from './styles.css';
 

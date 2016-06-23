@@ -8,7 +8,7 @@ import { selectUsername } from './selectors';
 import { changeUsername } from './actions';
 
 import Button from '../../Components/Button';
-import H2 from '../../Components/H2';
+import H2 from '../../Components/HX';
 
 import styles from './styles.css';
 
