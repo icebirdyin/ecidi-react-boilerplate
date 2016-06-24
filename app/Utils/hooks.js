@@ -8,14 +8,9 @@ export function injectAsyncReducer(store) {
 	};
 }
 
-export function injectAsyncSagas(store) {
-	return (sagas) => sagas.map(store.runSaga);
-}
-
 
 export function getHooks(store) {
 	return {
-		injectReducer: injectAsyncReducer(store),
-		injectSagas: injectAsyncSagas(store),
+		injectReducer: injectAsyncReducer(store)
 	};
 }

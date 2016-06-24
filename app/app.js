@@ -5,9 +5,6 @@
  * 
  */
 
-// 为了 redux-saga es6 generator 准备
-import 'babel-polyfill';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -24,30 +21,23 @@ if (window.devToolsExtension) {
 	window.devToolsExtension.updateStore(store);
 }
 
-import { selectLocationState } from './Pages/BasePage/selectors';
+import { selectLocationState } from 'Pages/BasePage/selectors';
 const history = syncHistoryWithStore(browserHistory, store, {
 	selectLocationState: selectLocationState(),
 });
 
-import BasePage from './Pages/BasePage';
+import BasePage from 'Pages/BasePage';
 import createRoutes from './routes';
-const rootRoute = {
-	component: BasePage,
-	childRoutes: createRoutes(store),
-};
 
 ReactDOM.render((
 	<Provider store={store}>
-		<Router 
-			history={history} 
-			routes={rootRoute} 
+		<Router history={history} 
 			render={
 				applyRouterMiddleware(useScroll())
-			}
-		/>
+			}>
+			<Route component={BasePage}>
+				{createRoutes(store)}
+			</Route>
+		<Router/>
 	</Provider>
 ), document.getElementById('app'));
-
-
-import { install } from 'offline-plugin/runtime';
-install();
