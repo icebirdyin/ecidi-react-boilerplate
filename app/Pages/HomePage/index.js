@@ -1,11 +1,28 @@
+/*
+ * HomePage
+ *
+ * at the '/' route
+ *
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import { createStructuredSelector } from 'reselect';
 
-import { selectUsername } from './selectors';
+import {
+	selectRepos,
+	selectLoading,
+	selectError,
+} from '../BasePage/selectors';
+
+import {
+	selectUsername,
+} from './selectors';
+
 import { changeUsername } from './actions';
+import { loadRepos } from '../BasePage/actions';
 
 import Button from '../../Components/Button';
 import H2 from '../../Components/HX';
@@ -18,11 +35,17 @@ export class HomePage extends React.Component {
 			this.props.onSubmitForm();
 		}
 	}
-
+	/**
+   * 改变路径
+   *
+   * @param  {string} route 设定的路径
+   */
 	openRoute = (route) => {
 		this.props.changeRoute(route);
 	};
-
+	/**
+   * 设定路径到 '/features'
+   */
 	openFeaturesPage = () => {
 		this.openRoute('/features');
 	};
@@ -43,8 +66,8 @@ export class HomePage extends React.Component {
 									id="username"
 									className={styles.input}
 									type="text"
-									placeholder="ecidi"
-									value={this.props.username}
+									placeholder="ecidi" 
+									value={this.props.username} 
 									onChange={this.props.onChangeUsername}
 								/>
 							</label>
@@ -59,6 +82,15 @@ export class HomePage extends React.Component {
 
 HomePage.propTypes = {
 	changeRoute: React.PropTypes.func,
+	loading: React.PropTypes.bool,
+	error: React.PropTypes.oneOfType([
+		React.PropTypes.object,
+		React.PropTypes.bool,
+	]),
+	repos: React.PropTypes.oneOfType([
+		React.PropTypes.array,
+		React.PropTypes.bool,
+	]),
 	onSubmitForm: React.PropTypes.func,
 	username: React.PropTypes.string,
 	onChangeUsername: React.PropTypes.func,
@@ -69,7 +101,8 @@ function mapDispatchToProps(dispatch) {
 		onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
 		changeRoute: (url) => dispatch(push(url)),
 		onSubmitForm: (evt) => {
-			alert(111);
+			if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+			dispatch(loadRepos());
 		},
 
 		dispatch,
@@ -77,7 +110,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
+	repos: selectRepos(),
 	username: selectUsername(),
+	loading: selectLoading(),
+	error: selectError(),
 });
 
+// 包装 component
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
+

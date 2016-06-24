@@ -1,3 +1,10 @@
+/*
+ * HomePage
+ *
+ * at the '/features' route
+ *
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
@@ -9,11 +16,18 @@ import styles from './styles.css';
 
 export class FeaturePage extends React.Component {
 
+	/**
+   * 改变路径
+   *
+   * @param  {string} route 设定的路径
+   */
 	openRoute = (route) => {
 		this.props.changeRoute(route);
 	};
-
-	openHomePage = () => {
+	/**
+   * 设定路径到 '/'
+   */
+	openFeaturesPage = () => {
 		this.openRoute('/');
 	};
 
