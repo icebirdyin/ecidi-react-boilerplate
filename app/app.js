@@ -7,9 +7,18 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { applyRouterMiddleware, browserHistory, Router } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import {
+	Provider
+} from 'react-redux';
+import {
+	applyRouterMiddleware,
+	browserHistory,
+	Router,
+	Route
+} from 'react-router';
+import {
+	syncHistoryWithStore
+} from 'react-router-redux';
 import useScroll from 'react-router-scroll';
 import configureStore from './store';
 
@@ -21,7 +30,9 @@ if (window.devToolsExtension) {
 	window.devToolsExtension.updateStore(store);
 }
 
-import { selectLocationState } from 'Pages/BasePage/selectors';
+import {
+	selectLocationState
+} from 'Pages/BasePage/selectors';
 const history = syncHistoryWithStore(browserHistory, store, {
 	selectLocationState: selectLocationState(),
 });
@@ -31,13 +42,8 @@ import createRoutes from './routes';
 
 ReactDOM.render((
 	<Provider store={store}>
-		<Router history={history} 
-			render={
-				applyRouterMiddleware(useScroll())
-			}>
-			<Route component={BasePage}>
-				{createRoutes(store)}
-			</Route>
-		<Router/>
+		<Router history={history} render={applyRouterMiddleware(useScroll())}>
+			<Route component={BasePage} children={createRoutes(store)}/>
+		</Router>
 	</Provider>
 ), document.getElementById('app'));

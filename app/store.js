@@ -6,9 +6,17 @@
  *
  */
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import { fromJS } from 'immutable';
-import { routerMiddleware } from 'react-router-redux';
+import { 
+	createStore, 
+	applyMiddleware, 
+	compose 
+} from 'redux';
+import { 
+	fromJS 
+} from 'immutable';
+import { 
+	routerMiddleware 
+} from 'react-router-redux';
 import createReducer from './reducers';
 
 const devtools = window.devToolsExtension || (() => noop => noop);

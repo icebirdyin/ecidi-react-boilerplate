@@ -14,7 +14,7 @@ class BasePage extends React.Component {
         return (
             <div className={styles.wrapper}>
 				<a className={styles.logoWrapper} href="###">
-					XXXX
+					XXXX111
 				</a>
 				{this.props.children}
 				<Footer />

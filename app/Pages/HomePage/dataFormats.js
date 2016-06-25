@@ -5,7 +5,9 @@
  * 
  */
 
-import { getProjectList } from 'Ajax/GET/project-list';
+import { 
+	getProjectList 
+} from 'Ajax/GET/project-list';
 
 
 export function getProjectListFormat() {

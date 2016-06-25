@@ -6,10 +6,16 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import {
+	connect
+} from 'react-redux';
+import {
+	push
+} from 'react-router-redux';
 
-import { createStructuredSelector } from 'reselect';
+import {
+	createStructuredSelector
+} from 'reselect';
 
 import {
 	selectRepos,
@@ -21,34 +27,38 @@ import {
 	selectUsername,
 } from './selectors';
 
-import { changeUsername } from './actions';
-import { loadRepos } from '../BasePage/actions';
+import {
+	changeUsername
+} from './actions';
+import {
+	loadRepos
+} from '../BasePage/actions';
 
 import Button from '../../Components/Button';
 import H2 from '../../Components/HX';
 
 import styles from './styles.css';
 
-export class HomePage extends React.Component {
+class HomePage extends React.Component {
 	componentDidMount() {
 		if (this.props.username && this.props.username.trim().length > 0) {
 			this.props.onSubmitForm();
 		}
 	}
 	/**
-   * 改变路径
-   *
-   * @param  {string} route 设定的路径
-   */
-	openRoute = (route) => {
+	 * 改变路径
+	 *
+	 * @param  {string} route 设定的路径
+	 */
+	openRoute(route) {
 		this.props.changeRoute(route);
-	};
+	}
 	/**
-   * 设定路径到 '/features'
-   */
-	openFeaturesPage = () => {
-		this.openRoute('/features');
-	};
+	 * 设定路径到 '/features'
+	 */
+	openFeaturesPage() {
+		this.openRoute('/features').bind(this);
+	}
 
 	render() {
 		return (
@@ -68,15 +78,17 @@ export class HomePage extends React.Component {
 									type="text"
 									placeholder="ecidi" 
 									value={this.props.username} 
-									onChange={this.props.onChangeUsername}
+									onChange = {
+										this.props.onChangeUsername
+									}
 								/>
 							</label>
 						</form>
 					</section>
-					<Button handleRoute={this.openFeaturesPage}>Features</Button>
+					<Button handleRoute={this.openFeaturesPage.bind(this)}>Features</Button>
 				</div>
 			</article>
-		);
+		)
 	}
 }
 
@@ -118,5 +130,3 @@ const mapStateToProps = createStructuredSelector({
 
 // 包装 component
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
-
-
