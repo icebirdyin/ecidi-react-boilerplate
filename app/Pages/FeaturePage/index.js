@@ -14,7 +14,7 @@ import {
 } from 'react-router-redux';
 
 import Button from '../../Components/Button';
-import H1 from '../../Components/HX';
+import { default as HX } from '../../Components/HX';
 
 import styles from './styles.css';
 
@@ -37,7 +37,7 @@ class FeaturePage extends React.Component {
 	render() {
 		return (
 			<div>
-			<H1>Features</H1>
+			<HX.H1>Features</HX.H1>
 			<ul className={styles.list}>
 				<li className={styles.listItem}>
 					<p className={styles.listItemTitle}>快速脚手架</p>
