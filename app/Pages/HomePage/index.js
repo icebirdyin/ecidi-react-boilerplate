@@ -40,11 +40,6 @@ import { default as HX } from '../../Components/HX';
 import styles from './styles.css';
 
 class HomePage extends React.Component {
-	componentDidMount() {
-		if (this.props.username && this.props.username.trim().length > 0) {
-			this.props.onSubmitForm();
-		}
-	}
 	/**
 	 * 改变路径
 	 *
@@ -69,7 +64,7 @@ class HomePage extends React.Component {
 						<p>这是个简单的脚手架。。。。。。</p>
 					</section>
 					<section className={styles.textSection}>
-						<form className={styles.usernameForm} onSubmit={this.props.onSubmitForm}>
+						<form className={styles.usernameForm}>
 							<label htmlFor="username">输入你的名字
 								<span className={styles.atPrefix}>：</span>
 								<input
@@ -85,12 +80,34 @@ class HomePage extends React.Component {
 							</label>
 						</form>
 					</section>
-					<Button handleRoute={this.openFeaturesPage.bind(this)}>Features</Button>
+					<Button handleRoute={() => this.openFeaturesPage()}>Features</Button>
 				</div>
 			</article>
 		);
 	}
 }
 
-// 包装 component
+HomePage.propTypes = {
+	changeRoute: React.PropTypes.func,
+	username: React.PropTypes.string,
+	onChangeUsername: React.PropTypes.func,
+};
+
+// 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
+const mapStateToProps = createStructuredSelector({
+	username: selectUsername(),
+});
+
+// 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。
+function mapDispatchToProps(dispatch) {
+	return {
+		onChangeUsername: (e) => dispatch(changeUsername(e.target.value)),
+		changeRoute: (url) => dispatch(push(url)),
+		dispatch,
+	};
+}
+
+// connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+// 连接 React 组件与 Redux store。
+// export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 export default HomePage;

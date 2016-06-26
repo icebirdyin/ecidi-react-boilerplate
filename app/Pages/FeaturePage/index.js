@@ -30,7 +30,7 @@ class FeaturePage extends React.Component {
 	/**
    * 设定路径到 '/'
    */
-	openFeaturesPage = () => {
+	openHomePage = () => {
 		this.openRoute('/');
 	};
 
@@ -54,7 +54,7 @@ class FeaturePage extends React.Component {
 					<p>单向数据流，完备的日志记录，方便调试。</p>
 				</li>
 			</ul>
-			<Button handleRoute={this.openHomePage}>Home</Button>
+			<Button handleRoute={() => this.openHomePage()}>Home</Button>
 			</div>
 		);
 	}
@@ -70,4 +70,7 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
+// connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+// 连接 React 组件与 Redux store。
+// export default connect(null, mapDispatchToProps)(FeaturePage);
 export default FeaturePage;
