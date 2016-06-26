@@ -2,7 +2,7 @@
  * Store
  *
  * Redux 应用只有一个单一的 store。
- * 当需要拆分数据处理逻辑时，你应该使用 reducer 组合 而不是创建多个 store。
+ * 将多个 reducer 合并成为之后传入到 createStore() 当中。
  *
  */
 
@@ -32,25 +32,28 @@ export default function configureStore(initialState = {}, history) {
 	];
 
 	// 创建 Redux store 来存放应用的状态。
+	// createStore() 的第二个参数是可选的, 用于设置 state 初始状态。
 	const store = createStore(
 		createReducer(),
 		fromJS(initialState),
 		compose(...enhancers)
 	);
 
-	store.asyncReducers = {};
+	// store.asyncReducers = {};
 
 
-	if (module.hot) {
-		module.hot.accept('./reducers', () => {
-			System.import('./reducers').then((reducerModule) => {
-				const createReducers = reducerModule.default;
-				const nextReducers = createReducers(store.asyncReducers);
+	// if (module.hot) {
+	// 	module.hot.accept('./reducers', () => {
+	// 		System.import('./reducers').then((reducerModule) => {
+	// 			const createReducers = reducerModule.default;
+	// 			const nextReducers = createReducers(store.asyncReducers);
 
-				store.replaceReducer(nextReducers);
-			});
-		});
-	}
+	// 			store.replaceReducer(nextReducers);
+	// 		});
+	// 	});
+	// }
+
+
 
 	return store;
 }

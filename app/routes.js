@@ -13,12 +13,10 @@ export default function createRoutes() {
 	return [
 		{
 			path: '/',
-			name: 'home',
 			component: HomePage
     	},
     	{
 			path: '/features',
-			name: 'features',
 			component: FeaturePage
     	},
 	];

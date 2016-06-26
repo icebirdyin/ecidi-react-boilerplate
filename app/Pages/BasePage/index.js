@@ -11,7 +11,6 @@ class BasePage extends React.Component {
         this.state = {};
     }
     render() {
-        console.log(this.props.children);
         return (
             <div className={styles.wrapper}>
 				<a className={styles.logoWrapper} href="###">
