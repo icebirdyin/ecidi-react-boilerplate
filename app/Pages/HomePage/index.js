@@ -35,7 +35,7 @@ import {
 } from '../BasePage/actions';
 
 import Button from '../../Components/Button';
-import H2 from '../../Components/HX';
+import { default as HX } from '../../Components/HX';
 
 import styles from './styles.css';
 
@@ -65,7 +65,7 @@ class HomePage extends React.Component {
 			<article>
 				<div>
 					<section className={`${styles.textSection} ${styles.centered}`}>
-						<H2>立马开始你下一个项目</H2>
+						<HX.H2>立马开始你下一个项目</HX.H2>
 						<p>这是个简单的脚手架。。。。。。</p>
 					</section>
 					<section className={styles.textSection}>
@@ -88,45 +88,9 @@ class HomePage extends React.Component {
 					<Button handleRoute={this.openFeaturesPage.bind(this)}>Features</Button>
 				</div>
 			</article>
-		)
+		);
 	}
 }
 
-HomePage.propTypes = {
-	changeRoute: React.PropTypes.func,
-	loading: React.PropTypes.bool,
-	error: React.PropTypes.oneOfType([
-		React.PropTypes.object,
-		React.PropTypes.bool,
-	]),
-	repos: React.PropTypes.oneOfType([
-		React.PropTypes.array,
-		React.PropTypes.bool,
-	]),
-	onSubmitForm: React.PropTypes.func,
-	username: React.PropTypes.string,
-	onChangeUsername: React.PropTypes.func,
-};
-
-function mapDispatchToProps(dispatch) {
-	return {
-		onChangeUsername: (evt) => dispatch(changeUsername(evt.target.value)),
-		changeRoute: (url) => dispatch(push(url)),
-		onSubmitForm: (evt) => {
-			if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-			dispatch(loadRepos());
-		},
-
-		dispatch,
-	};
-}
-
-const mapStateToProps = createStructuredSelector({
-	repos: selectRepos(),
-	username: selectUsername(),
-	loading: selectLoading(),
-	error: selectError(),
-});
-
 // 包装 component
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default HomePage;

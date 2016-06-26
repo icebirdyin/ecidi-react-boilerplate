@@ -6,16 +6,19 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { 
+	connect 
+} from 'react-redux';
+import { 
+	push 
+} from 'react-router-redux';
 
 import Button from '../../Components/Button';
 import H1 from '../../Components/HX';
 
 import styles from './styles.css';
 
-export class FeaturePage extends React.Component {
-
+class FeaturePage extends React.Component {
 	/**
    * 改变路径
    *
@@ -67,4 +70,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(null, mapDispatchToProps)(FeaturePage);
+export default FeaturePage;

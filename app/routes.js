@@ -5,20 +5,22 @@
  * 
  */
 import React from 'react';
-import {
-	Route
-} from 'react-router';
 
-import {
-	HomePage
-} from 'Pages/HomePage';
-import {
-	FeaturePage
-} from 'Pages/FeaturePage';
+import HomePage from 'Pages/HomePage';
+import FeaturePage from 'Pages/FeaturePage';
 
 export default function createRoutes() {
+	console.log(HomePage)
 	return [
-		<Route path="/" component={HomePage}/>,
-		<Route path="/features" component={FeaturePage}/>
+		{
+			path: '/',
+			name: 'home',
+			component: HomePage
+    	},
+    	{
+			path: '/features',
+			name: 'features',
+			component: FeaturePage
+    	},
 	];
 }

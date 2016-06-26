@@ -13,8 +13,7 @@ import {
 import {
 	applyRouterMiddleware,
 	browserHistory,
-	Router,
-	Route
+	Router
 } from 'react-router';
 import {
 	syncHistoryWithStore
@@ -39,11 +38,17 @@ const history = syncHistoryWithStore(browserHistory, store, {
 
 import BasePage from 'Pages/BasePage';
 import createRoutes from './routes';
+const rootRoute = {
+	component: BasePage,
+	childRoutes: createRoutes(store),
+};
 
 ReactDOM.render((
 	<Provider store={store}>
-		<Router history={history} render={applyRouterMiddleware(useScroll())}>
-			<Route component={BasePage} children={createRoutes(store)}/>
+		<Router 
+			history={history} 
+			routes={rootRoute} 
+			render={applyRouterMiddleware(useScroll())}>
 		</Router>
 	</Provider>
 ), document.getElementById('app'));
