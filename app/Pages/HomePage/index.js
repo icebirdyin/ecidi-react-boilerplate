@@ -60,8 +60,8 @@ class HomePage extends React.Component {
 			<article>
 				<div>
 					<section className={`${styles.textSection} ${styles.centered}`}>
-						<HX.H2>立马开始你下一个项目</HX.H2>
-						<p>这是个简单的脚手架。。。。。。</p>
+						<HX.H2>立马开始你下一个项目111xxx</HX.H2>
+						<p>这是个简单的脚手架。。。。。。<span>1111ddd</span></p>
 					</section>
 					<section className={styles.textSection}>
 						<form className={styles.usernameForm}>
