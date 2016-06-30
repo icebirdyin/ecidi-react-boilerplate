@@ -38,8 +38,6 @@ app文件夹内部所有功能组件性质的集合都大写开头。
 
 `$ npm install`
 
-`$ npm run build`
-
 `$ npm run start`
 
 打开游览器，地址栏输入 http://localhost:8080；
