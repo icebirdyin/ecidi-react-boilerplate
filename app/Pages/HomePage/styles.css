@@ -1,5 +1,6 @@
 .textSection {
 	margin: 3em auto;
+	background-image: url('./nothing.png');
 }
 
 .textSection:first-child {
