@@ -27,6 +27,7 @@ module.exports = require('./webpack.base.config')({
     output: {
         filename: '[name].js',
         chunkFilename: '[name].chunk.js',
+        publicPath: 'http://localhost:8080/',
     },
 
     plugins: dependencyHandlers().concat(plugins),
