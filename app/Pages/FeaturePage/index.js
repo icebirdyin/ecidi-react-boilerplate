@@ -57,7 +57,7 @@ FeaturePage.propTypes = {
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
 const mapStateToProps = (state) => {
 	return {
-		username: state.username,
+		username: state.get('homeReducer').get('username'),
 	}
 }
 
@@ -68,6 +68,7 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
+// react-redux 的使用方式
 // connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
 // 连接 React 组件与 Redux store。
 export default connect(mapStateToProps, mapDispatchToProps)(FeaturePage);

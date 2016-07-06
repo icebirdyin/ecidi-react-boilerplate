@@ -31,7 +31,7 @@ function routeReducer(state = routeInitialState, action) {
 function createReducer() {
 	return combineReducers({
 		routeReducer,
-		global: homeReducer,
+		homeReducer: homeReducer,
 	});
 }
 

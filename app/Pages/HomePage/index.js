@@ -10,14 +10,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import { createStructuredSelector } from 'reselect';
-
-// import {
-// 	selectRepos,
-// 	selectLoading,
-// 	selectError,
-// } from '../BasePage/selectors';
-
-// import { selectUsername } from './selectors';
+import { selectUsername } from './selectors';
 
 import { changeUserName } from './actions';
 import { loadRepos } from '../BasePage/actions';
@@ -72,14 +65,9 @@ HomePage.propTypes = {
 };
 
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
-// const mapStateToProps = createStructuredSelector({
-// 	username: selectUsername(),
-// });
-const mapStateToProps = (state) => {
-	return {
-		username: state.get('global').get('username'),
-	}
-}
+const mapStateToProps = createStructuredSelector({
+	username: selectUsername(),
+});
 
 // 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。
 function mapDispatchToProps(dispatch) {
@@ -89,6 +77,7 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
+// react-redux 的使用方式
 // connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
 // 连接 React 组件与 Redux store。
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
