@@ -21,17 +21,14 @@ import configureStore from './store';
 const initialState = {};
 const store = configureStore(initialState, browserHistory);
 
-// if (window.devToolsExtension) {
-// 	window.devToolsExtension.updateStore(store);
-// }
+if (window.devToolsExtension) {
+	window.devToolsExtension.updateStore(store);
+}
 
-// import { selectLocationState } from 'Pages/BasePage/selectors';
-// const history = syncHistoryWithStore(browserHistory, store, {
-// 	selectLocationState: selectLocationState(),
-// });
-// const history = syncHistoryWithStore(browserHistory, store, {
-// 	selectLocationState: selectLocationState(),
-// });
+import { selectLocationState } from 'Pages/BasePage/selectors';
+const history = syncHistoryWithStore(browserHistory, store, {
+	selectLocationState: selectLocationState(),
+});
 
 import BasePage from 'Pages/BasePage';
 import createRoutes from './routes';

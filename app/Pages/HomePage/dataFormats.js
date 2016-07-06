@@ -10,7 +10,7 @@ import {
 } from 'Ajax/GET/project-list';
 
 
-export function getProjectListFormat() {
+export function getProjectListFormat(state) {
     getProjectList((data) => {
         console.log(data);
     });

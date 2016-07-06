@@ -36,9 +36,6 @@ export default function configureStore(initialState = {}, history) {
 		compose(...enhancers)
 	);
 
-	// STEP1:
-	// const store = createStore(createReducer());
-
 	store.asyncReducers = {};
 
 	if (module.hot) {
