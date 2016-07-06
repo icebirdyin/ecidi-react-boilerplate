@@ -7,17 +7,11 @@
  * 
  */
 
-import { 
-	fromJS 
-} from 'immutable';
-import { 
-	combineReducers 
-} from 'redux-immutable';
-import { 
-	LOCATION_CHANGE 
-} from 'react-router-redux';
+import { fromJS } from 'immutable';
+import { combineReducers } from 'redux-immutable';
+import { LOCATION_CHANGE } from 'react-router-redux';
 
-import appReducer from './Pages/BasePage/reducer';
+import homeReducer from './Pages/HomePage/reducer';
 
 const routeInitialState = fromJS({
 	locationBeforeTransitions: null,
@@ -34,12 +28,11 @@ function routeReducer(state = routeInitialState, action) {
 	}
 }
 
-function createReducer(asyncReducers) {
+function createReducer() {
 	return combineReducers({
-		route: routeReducer,
-		global: appReducer,
-		...asyncReducers,
+		routeReducer,
+		global: homeReducer,
 	});
 }
 
-export default createReducer
+export default createReducer;

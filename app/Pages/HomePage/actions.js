@@ -16,12 +16,12 @@
  */
 
 import {
-	CHANGE_USERNAME,
+	CHANGE_USER_NAME,
 } from './actionTypes';
 
-export function changeUsername(name) {
+export function changeUserName(username) {
 	return {
-		type: CHANGE_USERNAME,
-		name
+		type: CHANGE_USER_NAME,
+		username
 	};
 }

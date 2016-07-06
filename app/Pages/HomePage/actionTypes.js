@@ -5,4 +5,4 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const CHANGE_USERNAME = 'ecidi/Home/CHANGE_USERNAME';
+export const CHANGE_USER_NAME = 'ecidi/Home/CHANGE_USER_NAME';

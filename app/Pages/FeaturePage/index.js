@@ -6,12 +6,8 @@
  */
 
 import React from 'react';
-import { 
-	connect 
-} from 'react-redux';
-import { 
-	push 
-} from 'react-router-redux';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import Button from '../../Components/Button';
 import { default as HX } from '../../Components/HX';
@@ -20,24 +16,17 @@ import styles from './styles.css';
 
 class FeaturePage extends React.Component {
 	/**
-   * 改变路径
-   *
-   * @param  {string} route 设定的路径
-   */
-	openRoute = (route) => {
-		this.props.changeRoute(route);
-	};
-	/**
    * 设定路径到 '/'
    */
 	openHomePage = () => {
-		this.openRoute('/');
+		this.props.changeRoute('/');
 	};
 
 	render() {
 		return (
 			<div>
 			<HX.H1>Features</HX.H1>
+			<HX.H1>{this.props.username}</HX.H1>
 			<ul className={styles.list}>
 				<li className={styles.listItem}>
 					<p className={styles.listItemTitle}>快速脚手架</p>
@@ -54,16 +43,25 @@ class FeaturePage extends React.Component {
 					<p>单向数据流，完备的日志记录，方便调试。</p>
 				</li>
 			</ul>
-			<Button handleRoute={() => this.openHomePage()}>Home</Button>
+			<Button handleRoute={this.openHomePage}>Home</Button>
 			</div>
 		);
 	}
 }
 
 FeaturePage.propTypes = {
+	username: React.PropTypes.string,
 	changeRoute: React.PropTypes.func,
 };
 
+// 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
+const mapStateToProps = (state) => {
+	return {
+		username: state.username,
+	}
+}
+
+// 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。
 function mapDispatchToProps(dispatch) {
 	return {
 		changeRoute: (url) => dispatch(push(url)),
@@ -72,5 +70,4 @@ function mapDispatchToProps(dispatch) {
 
 // connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
 // 连接 React 组件与 Redux store。
-// export default connect(null, mapDispatchToProps)(FeaturePage);
-export default FeaturePage;
+export default connect(mapStateToProps, mapDispatchToProps)(FeaturePage);

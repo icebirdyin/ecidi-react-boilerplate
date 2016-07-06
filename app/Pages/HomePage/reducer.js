@@ -9,7 +9,7 @@
  */
 
 import {
-	CHANGE_USERNAME,
+	CHANGE_USER_NAME,
 } from './actionTypes';
 import { fromJS } from 'immutable';
 
@@ -19,8 +19,8 @@ const initialState = fromJS({
 
 function homeReducer(state = initialState, action) {
 	switch (action.type) {
-		case CHANGE_USERNAME:
-			return state.set('username', action.name);
+		case CHANGE_USER_NAME:
+			return state.set('username', action.username);
 		default:
 			return state;
 	}
