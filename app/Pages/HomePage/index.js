@@ -11,9 +11,7 @@ import { push } from 'react-router-redux';
 
 import { createStructuredSelector } from 'reselect';
 import { selectUsername } from './selectors';
-
 import { changeUserName } from './actions';
-import { loadRepos } from '../BasePage/actions';
 
 import Button from '../../Components/Button';
 import { default as HX } from '../../Components/HX';

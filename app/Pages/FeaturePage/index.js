@@ -9,6 +9,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
+import { createStructuredSelector } from 'reselect';
+import { selectUsername } from './selectors';
+
 import Button from '../../Components/Button';
 import { default as HX } from '../../Components/HX';
 
@@ -55,11 +58,15 @@ FeaturePage.propTypes = {
 };
 
 // 任何时候，只要 Redux store 发生改变，mapStateToProps 函数就会被调用。
-const mapStateToProps = (state) => {
-	return {
-		username: state.get('homeReducer').get('username'),
-	}
-}
+// 原始的写法如下：
+// const mapStateToProps = (state) => {
+// 	return {
+// 		username: state.get('homeReducer').get('username'),
+// 	}
+// }
+const mapStateToProps = createStructuredSelector({
+	username: selectUsername(),
+});
 
 // 如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件 props 中。
 function mapDispatchToProps(dispatch) {
