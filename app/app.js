@@ -25,10 +25,10 @@ if (window.devToolsExtension) {
 	window.devToolsExtension.updateStore(store);
 }
 
-import { selectLocationState } from 'Pages/BasePage/selectors';
-const history = syncHistoryWithStore(browserHistory, store, {
-	selectLocationState: selectLocationState(),
-});
+// import { selectLocationState } from 'Pages/BasePage/selectors';
+// const history = syncHistoryWithStore(browserHistory, store, {
+// 	selectLocationState: selectLocationState(),
+// });
 
 import BasePage from 'Pages/BasePage';
 import createRoutes from './routes';
