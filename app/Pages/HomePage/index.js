@@ -17,6 +17,7 @@ import Button from '../../Components/Button';
 import { default as HX } from '../../Components/HX';
 
 import styles from './styles.css';
+import nothing from './nothing.png';
 
 class HomePage extends React.Component {
 	/**
@@ -30,14 +31,15 @@ class HomePage extends React.Component {
 		return (
 			<article>
 				<div>
-					<section className={`${styles.textSection} ${styles.centered}`}>
-						<HX.H2>立马开始你下一个项目111xxx</HX.H2>
-						<p>这是个简单的脚手架。。。。。。<span>1111ddd</span></p>
+					<section className={`${styles['text-section']} ${styles.centered}`}>
+						<HX.H2>这是个简单的脚手架</HX.H2>
+						<p><span>涵盖了各种出现的情况</span></p>
 					</section>
-					<section className={styles.textSection}>
-						<form className={styles.usernameForm}>
+
+					<section className={styles['text-section']}>
+						<form className={styles['username-form']}>
 							<label htmlFor="username">输入你的名字
-								<span className={styles.atPrefix}>：</span>
+								<span className={styles['at-prefix']}>：</span>
 								<input
 									id="username"
 									className={styles.input}
@@ -49,6 +51,22 @@ class HomePage extends React.Component {
 							</label>
 						</form>
 					</section>
+
+					<section className={`${styles['text-section']} ${styles.centered}`}>
+						<HX.H2>*这是个背景图的例子</HX.H2>
+						<p className={styles.background}>背景图背景图背景图背景图背景图背景图背景图背景图</p>
+					</section>
+
+					<section className={`${styles['text-section']} ${styles.centered}`}>
+						<HX.H2>*这是个image的例子</HX.H2>
+						<img src={nothing} title="我这个只是一个图片"/>
+					</section>
+
+					<section className={`${styles['text-section']} ${styles.centered}`}>
+						<HX.H2>*这是个iframe的例子</HX.H2>
+						<iframe></iframe>
+					</section>
+
 					<Button handleRoute={this.openFeaturesPage}>Features</Button>
 				</div>
 			</article>

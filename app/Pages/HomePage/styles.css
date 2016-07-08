@@ -1,9 +1,14 @@
-.textSection {
+.text-section {
 	margin: 3em auto;
+}
+
+.background{
+	width: 200px;
+	height: 248px;
 	background-image: url('./nothing.png');
 }
 
-.textSection:first-child {
+.text-section:first-child {
 	margin-top: 0;
 }
 
@@ -17,7 +22,7 @@ label {
 	line-height: 1.5em;
 }
 
-.usernameForm {
+.username-form {
 	margin-bottom: 1em;
 }
 
@@ -26,7 +31,7 @@ label {
 	border-bottom: 1px dotted #999;
 }
 
-.atPrefix {
+.at-prefix {
 	color: black;
 	margin-left: 0.4em;
 }
