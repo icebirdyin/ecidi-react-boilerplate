@@ -31,11 +31,15 @@ if (window.devToolsExtension) {
 // });
 
 import BasePage from 'Pages/BasePage';
+import IframePage from 'Pages/IframePage';
 import createRoutes from './routes';
-const rootRoute = {
+const rootRoute = [{
 	component: BasePage,
 	childRoutes: createRoutes(store),
-};
+}, {
+	path: '/iframe',
+	component: IframePage
+}];
 
 ReactDOM.render((
 	<Provider store={store}>

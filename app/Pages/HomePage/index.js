@@ -64,7 +64,7 @@ class HomePage extends React.Component {
 
 					<section className={`${styles['text-section']} ${styles.centered}`}>
 						<HX.H2>*这是个iframe的例子</HX.H2>
-						<iframe></iframe>
+						<iframe src="/iframe"></iframe>
 					</section>
 
 					<Button handleRoute={this.openFeaturesPage}>Features</Button>
