@@ -33,6 +33,7 @@ module.exports = require('./webpack.base.config')({
         }),
     ],
     plugins: [
+        // 提取代码中的公共模块，然后将公共模块打包到 vendor.js 中
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             children: true,
@@ -44,6 +45,8 @@ module.exports = require('./webpack.base.config')({
 
         new webpack.optimize.DedupePlugin(),
 
+        // 压缩 JavaScript，去掉一些不必要的警告
+        // 在 webpack -p 时自动执行
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false, 
