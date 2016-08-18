@@ -10,6 +10,7 @@ const postcssReporter = require('postcss-reporter');
 
 const plugins = [
     new webpack.HotModuleReplacementPlugin(),
+    // 报错但不退出webpack进程
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
         inject: true,
