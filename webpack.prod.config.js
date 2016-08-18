@@ -71,6 +71,7 @@ module.exports = require('./webpack.base.config')({
         // 将css文件提取出来
         new ExtractTextPlugin('[name].[contenthash].css'),
 
+        // 离线缓存机制
         new OfflinePlugin({
             excludes: ['.htaccess'],
 
