@@ -33,7 +33,13 @@ module.exports = require('./webpack.base.config')({
         }),
     ],
     plugins: [
-        // 提取代码中的公共模块，然后将公共模块打包到 vendor.js 中
+        // 提取公共模块，然后将公共模块打包到 vendor.js。
+        // main1.js => a,b,c
+        // main2.js => a,b
+        // 结果：
+        // vendor.js => a,b
+        // main1.js => c
+        // main2.js => 空
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             children: true,
