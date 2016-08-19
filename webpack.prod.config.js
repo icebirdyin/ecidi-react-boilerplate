@@ -18,6 +18,15 @@ module.exports = require('./webpack.base.config')({
         chunkFilename: '[name].[chunkhash].chunk.js',
     },
 
+    // 提取 css 文件
+    // ExtractTextPlugin.extract可以有三个参数
+        // 第一个参数是可选参数，传入一个loader，当css样式没有被抽取的时候可以使用该loader。
+        // 第二个参数则是用于编译解析的css文件loader，很明显这个是必须传入的。
+        // 第三个参数是一些额外的备选项，貌似目前只有传入publicPath，用于当前loader的路径。
+    // style-loader 将样式注入到style中
+    // css-loader 使css-module工作，模块当中能使用对象的方式来使用css
+        // modules 符合css-module规范
+        // importLoaders 后面连接的loader数量
     cssLoaders: ExtractTextPlugin.extract(
         'style-loader',
         'css-loader?modules&importLoaders=1!postcss-loader'
@@ -25,6 +34,7 @@ module.exports = require('./webpack.base.config')({
 
     postcssPlugins: [
         postcssFocus(),
+        // 支持所有类型的css样式
         cssnext({
             browsers: ['last 2 versions', 'IE > 10'],
         }),
@@ -41,21 +51,23 @@ module.exports = require('./webpack.base.config')({
         // main1.js => c
         // main2.js => 空
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
-            children: true,
-            minChunks: 2,
-            async: true,
+            name: 'vendor', // The chunk name of the commons chunk. 
+            children: true, // If true all children of the commons chunk are selected. 
+            minChunks: 2, // 至少被多少个模块使用的组件才能被包含到公共区域当中
+            async: true, // 异步加载
         }),
 
+        // 排序输出
         new webpack.optimize.OccurrenceOrderPlugin(true),
 
+        // 删除与NPM重复的数据，有效减小文件大小
         new webpack.optimize.DedupePlugin(),
 
         // 压缩 JavaScript，去掉一些不必要的警告
         // 在 webpack -p 时自动执行
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                warnings: false, 
+                warnings: false, // 去掉一些不必要的警告
             },
         }),
 
@@ -77,7 +89,16 @@ module.exports = require('./webpack.base.config')({
             inject: true, // 制定资源存放位置
         }),
 
-        // 将css文件提取出来
+        // 针对提取出来的css文件进行操作，也是有三个变量
+        // new ExtractTextPlugin([id: string], filename: string, [options])
+            // 该插件实例的唯一标志，一般是不会传的，其自己会生成。
+            // 文件名。可以是[name]、[id]、[contenthash]
+                // [name]：将会和entry中的chunk的名字一致
+                // [id]：将会和entry中的chunk的id一致
+                // [contenthash]：根据内容生成hash值
+            // options
+                // allchunk： 是否将所有额外的chunk都压缩成一个文件
+                // disable：禁止使用插件
         new ExtractTextPlugin('[name].[contenthash].css'),
 
         // 离线缓存机制

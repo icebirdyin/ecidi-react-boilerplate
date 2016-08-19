@@ -4,7 +4,8 @@
   "description": "ecidi react boilerplate",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development node server"
+    "start": "cross-env NODE_ENV=development node server",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js --color -p"
   },
   "keywords": [
     "react",
