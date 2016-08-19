@@ -33,11 +33,13 @@ module.exports = require('./webpack.base.config')({
     ),
 
     postcssPlugins: [
+        // 补充:focus伪类的功能
         postcssFocus(),
-        // 支持所有类型的css样式
+        // 让css支持最新的语法
         cssnext({
             browsers: ['last 2 versions', 'IE > 10'],
         }),
+        // 编译出现问题时报出错误
         postcssReporter({
             clearMessages: true,
         }),

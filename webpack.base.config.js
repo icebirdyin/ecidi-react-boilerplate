@@ -27,7 +27,9 @@ module.exports = (options) => ({
         }, {
             test: /\.(jpg|png|gif)$/,
             loaders: [
-                'file-loader',
+                // 编译生成一个文件，并返回对应路径
+                'file-loader', 
+                // 将图片压缩
                 'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
             ],
         }, {

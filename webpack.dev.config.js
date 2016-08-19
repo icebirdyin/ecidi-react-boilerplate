@@ -2,7 +2,6 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const logger = require('./server/logger');
 
 const cssnext = require('postcss-cssnext');
 const postcssFocus = require('postcss-focus');
@@ -33,6 +32,7 @@ module.exports = require('./webpack.base.config')({
         publicPath: 'http://localhost:8080/',
     },
 
+    // 合并好的plugins信息
     plugins: dependencyHandlers().concat(plugins),
 
     // postcss-loader 用于在JavaScript中转换css样式的插件，需要postcssPlugins配合使用
@@ -45,15 +45,19 @@ module.exports = require('./webpack.base.config')({
     cssLoaders: 'style-loader!css-loader?localIdentName=[local]__[path][name]__[hash:base64:5]&modules&importLoaders=1&sourceMap!postcss-loader',
 
     postcssPlugins: [
+        // 补充:focus伪类的功能
         postcssFocus(),
+        // 让css支持最新的语法
         cssnext({
             browsers: ['last 2 versions', 'IE > 10'],
         }),
+        // 编译出现问题时报出错误
         postcssReporter({
             clearMessages: true,
         }),
     ],
 
+    // babel-loader的配置信息
     babelQuery: {
         presets: ['react-hmre'],
     },
